@@ -42,7 +42,7 @@ config.rotation = "..." # Defaults to nil
 
 ### Available methods
 
-Please refer to the official [Bookboon API Reference](https://github.com/bookboon/api/blob/master/Reference.md) for structure of the output. Right now no transformation of any kind is done, we just return the output from Bookboon as pure JSON.
+Please refer to the official [Bookboon API Reference](https://github.com/bookboon/api/blob/master/Reference.md) for structure of the output. Right now no transformation of any kind is done, we just return the output from Bookboon as pure JSON, except for the `download_book` method, which returns a temporary URL to download the book directly.
 
 * `client.categories`
 * `client.category(id)`
