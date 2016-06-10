@@ -37,12 +37,12 @@ Additional config settings are available:
 ```ruby
 config.language = "..." # Defaults to "en", see Bookboon API reference for available languages
 config.branding_id = "..." # Defaults to nil
-config.rotation = "..." # Defaults to nil
+config.rotation_id = "..." # Defaults to nil
 ```
 
 ### Available methods
 
-Please refer to the official [Bookboon API Reference](https://github.com/bookboon/api/blob/master/Reference.md) for structure of the output. Right now no transformation of any kind is done, we just return the output from Bookboon as pure JSON, except for the `download_book` method, which returns a temporary URL to download the book directly.
+Please refer to the official [Bookboon API Reference](https://github.com/bookboon/api/blob/master/Reference.md) for structure of the output. Right now no transformation of any kind is done, we just return the raw output from Bookboon as a Hash, except for the `download_book` method, which returns a temporary URL to download the book directly.
 
 * `client.categories`
 * `client.category(id)`
