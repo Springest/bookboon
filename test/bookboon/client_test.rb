@@ -43,11 +43,14 @@ class Bookboon::ClientTest < Minitest::Test
 
   def test_download_book
     url = "https://bookboon.com/api/books/123/download"
-    stub_request(:any, url).with(body: { handle: "dennis@springest.com" })
+    fake_download_url = "https://bookboon.com/some_kind_of_download_url"
+    stub_request(:any, url).with(body: { handle: "dennis@springest.com" }).to_return(headers: { location: fake_download_url })
 
-    @client.download_book("123", "dennis@springest.com")
+    request = @client.download_book("123", "dennis@springest.com")
 
     assert_requested(:post, url, body: { handle: "dennis@springest.com" })
+
+    assert fake_download_url, request
   end
 
   def test_configured_headers

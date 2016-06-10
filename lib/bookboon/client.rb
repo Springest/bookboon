@@ -25,9 +25,9 @@ module Bookboon
     end
 
     def download_book(id, handle)
-      request = post("books/#{id}/download", body: { handle: handle })
+      post("books/#{id}/download", body: { handle: handle })
 
-      request.headers['location']
+      @last_request.headers['location']
     end
 
     # TODO: Implement /questions
@@ -51,7 +51,9 @@ module Bookboon
         follow_redirects: false,
       }.merge(options)
 
-      HTTParty.send(method, uri, options)
+      @last_request = HTTParty.send(method, uri, options)
+
+      @last_request.parsed_response
     end
 
     def get(path, options = {})
